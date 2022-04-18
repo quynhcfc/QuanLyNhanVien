@@ -39,9 +39,9 @@ var validatorNV = {
   },
 
   kiemTraTen: (string, idErr) => {
-    let isValid = validator.isAlpha(string);
+    let isValid = validator.isNumeric(string);
 
-    if (isValid) {
+    if (!isValid) {
       document.getElementById(idErr).innerText = "";
       return true;
     }

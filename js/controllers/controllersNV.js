@@ -63,8 +63,6 @@ let renderDanhSachNhanVien = (danhSachNhanVienArr) => {
       }
     };
 
-    // Xếp loại nhân viên
-
     // Xuất bảng nhân viên
     let contentTr = `<tr>
         <td>${nhanVienHienTai.taiKhoan}</td>

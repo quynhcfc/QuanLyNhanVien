@@ -21,8 +21,10 @@ let spanThongBao = () => {
 document.getElementById("btnThem").addEventListener("click", () => {
   document.getElementById("tknv").disabled = false;
   document.getElementById("password").disabled = false;
-  document.getElementById("btnThemNV").disabled = false;
-  document.getElementById("btnCapNhat").disabled = true;
+  document.getElementById("btnThemNV").style.display = "block";
+  document.getElementById("btnCapNhat").style.display = "none";
+
+  document.getElementById("header-title").innerText = "Thêm nhân viên mới";
 });
 
 // Thêm nhân viên
@@ -117,8 +119,9 @@ suaNhanVien = (taiKhoan) => {
 
   document.getElementById("tknv").disabled = true;
   document.getElementById("password").disabled = true;
-  document.getElementById("btnThemNV").disabled = true;
-  document.getElementById("btnCapNhat").disabled = false;
+  document.getElementById("btnThemNV").style.display = "none";
+  document.getElementById("btnCapNhat").style.display = "block";
+  document.getElementById("header-title").innerText = "Cập nhật nhân viên";
 };
 
 // Cập nhật nhân viên
@@ -161,16 +164,17 @@ capNhatNhanVien = (taiKhoan) => {
 
 // Tìm kiếm nhân viên theo loại nhân viên
 document.getElementById("searchName").addEventListener("keyup", () => {
-  var keyword = document.getElementById("searchName").value;
+  var keyword = document.getElementById("searchName").value.toLowerCase();
 
   var danhSachTimKiem = danhSachNhanVienArr.filter((nv) => {
-    return nv.xepLoai.includes(keyword);
+    return nv.xepLoai.toLowerCase().includes(keyword);
   });
 
   renderDanhSachNhanVien(danhSachTimKiem);
 });
 
 // Sắp xếp tài khoản
+/*
 sapXepTaiKhoan = () => {
   var newDanhSachNV = danhSachNhanVienArr.map((nhanvien) => ({
     ...nhanvien,
@@ -185,6 +189,7 @@ sapXepTaiKhoan = () => {
 
   renderDanhSachNhanVien(newDanhSachNV);
 };
+*/
 
 // Modal Bootstrap
 $(document).ready(function () {
@@ -195,7 +200,6 @@ $(document).ready(function () {
 
 $("#myModal").on("hidden.bs.modal", function () {
   $(this).find("form")[0].reset();
-  // $(this).find("form").trigger("reset");
   // $(this).find("form").trigger("reset");
   // $("#myModal form")[0].reset();
   $(this).find(".sp-thongbao").hide();
